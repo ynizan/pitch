@@ -159,6 +159,76 @@ body {
   opacity: 0.7;
 }
 
+.chat-loop {
+  position: relative;
+  margin: 0 0 48px 0;
+  padding: 0 8px;
+  padding-bottom: 60px;
+}
+
+.chat-row {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 20px;
+  max-width: 78%;
+}
+
+.chat-row.left {
+  margin-right: auto;
+  align-items: flex-start;
+}
+
+.chat-row.right {
+  margin-left: auto;
+  align-items: flex-end;
+}
+
+.chat-tag {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gray-dark);
+  white-space: nowrap;
+  padding: 0 4px;
+}
+
+.chat-bubble {
+  background: var(--black-soft);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 16px 20px;
+  font-family: var(--font-body);
+  font-size: 17px;
+  color: var(--white);
+  line-height: 1.5;
+  width: 100%;
+}
+
+.chat-row.left .chat-bubble {
+  border-bottom-left-radius: 4px;
+}
+
+.chat-row.right .chat-bubble {
+  border-bottom-right-radius: 4px;
+}
+
+.chat-bubble strong {
+  color: var(--gold);
+  font-weight: 600;
+}
+
+.chat-loop .return-arrow {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 96px;
+  height: 56px;
+  pointer-events: none;
+}
+
 .conclusion {
   border-top: 2px solid var(--gold);
   padding-top: 28px;
@@ -322,6 +392,22 @@ body {
   .bullets li { font-size: 16px; }
   .comparison .label, .comparison .volume, .comparison .intouch { width: auto; }
   .comparison tbody td { font-size: 15px; padding: 14px 12px; }
+
+  .chat-row {
+    max-width: 92%;
+    gap: 4px;
+  }
+  .chat-tag {
+    font-size: 9px;
+  }
+  .chat-bubble {
+    font-size: 15px;
+    padding: 12px 16px;
+  }
+  .chat-loop .return-arrow {
+    width: 80px;
+    height: 48px;
+  }
 
   .spiral {
     height: 560px;
@@ -521,20 +607,84 @@ body {
 
 .roadmap-rail {
   position: relative;
-  padding: 0 30px;
-}
-
-.rail-svg {
-  width: 100%;
-  height: 40px;
-  display: block;
-}
-
-.rail-labels {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 16px;
   margin-top: 4px;
-  padding: 0 14px;
+}
+
+.rail-cell {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px;
+}
+
+.rail-cell::before {
+  content: "";
+  position: absolute;
+  top: 9px;
+  height: 1.5px;
+  background: var(--gold);
+}
+
+.rail-cell-past::before {
+  left: 50%;
+  right: -8px;
+  opacity: 0.9;
+}
+
+.rail-cell-now::before {
+  left: -8px;
+  right: 50%;
+  opacity: 0.9;
+}
+
+.rail-cell-now::after {
+  content: "";
+  position: absolute;
+  top: 9px;
+  left: 50%;
+  right: -8px;
+  height: 0;
+  border-top: 1.5px dashed var(--gold);
+  opacity: 0.6;
+}
+
+.rail-cell-future::before {
+  left: -8px;
+  right: 50%;
+  height: 0;
+  border-top: 1.5px dashed var(--gold);
+  background: transparent;
+  opacity: 0.6;
+}
+
+.rail-dot {
+  position: absolute;
+  top: 4px;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: var(--gold);
+  z-index: 2;
+  box-sizing: content-box;
+}
+
+.rail-dot.dot-now {
+  width: 14px;
+  height: 14px;
+  top: 3px;
+  box-shadow: 0 0 0 5px rgba(212, 165, 116, 0.2);
+}
+
+.rail-dot.dot-future {
+  background: var(--black-mid);
+  border: 1.5px solid var(--gold);
+  width: 9px;
+  height: 9px;
+  top: 5px;
 }
 
 .rail-label {
@@ -544,15 +694,13 @@ body {
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--gray-dark);
+  text-align: center;
+  margin-top: 6px;
 }
 
-.rail-label.rail-now {
+.rail-label-now {
   color: var(--gold);
   font-weight: 700;
-}
-
-.rail-label.rail-future {
-  color: var(--gray-dark);
 }
 
 .rail-mark {
@@ -672,15 +820,31 @@ body {
   <div class="slide-label">The market</div>
   <h2 class="slide-title">Volume outreach<br/>can't win</h2>
 
-  <ul class="bullets">
-    <li>Email unsubscribe rate <strong>tripled in 12 months</strong> due to Gmail changes</li>
-    <li>Gmail pushes <strong>75%</strong> of marketing emails out of the inbox</li>
-    <li>The average user receives <strong>121 emails per day</strong> — up 8.5% in two years and accelerating</li>
-    <li><strong>73% of B2B buyers</strong> actively avoid automated outreach</li>
-  </ul>
+  <div class="chat-loop">
+    <div class="chat-row left">
+      <div class="chat-tag">More volume</div>
+      <div class="chat-bubble">The average user receives <strong>121 emails per day</strong> — up 8.5% in two years and accelerating</div>
+    </div>
+    <div class="chat-row right">
+      <div class="chat-tag">More defense</div>
+      <div class="chat-bubble">Email unsubscribe rate <strong>tripled in 12 months</strong> due to Gmail changes</div>
+    </div>
+    <div class="chat-row left">
+      <div class="chat-tag">More volume</div>
+      <div class="chat-bubble">AI now sends <strong>10× more emails</strong> than human SDRs — 30% of outbound is AI-generated</div>
+    </div>
+    <div class="chat-row right">
+      <div class="chat-tag">More defense</div>
+      <div class="chat-bubble"><strong>73% of B2B buyers</strong> actively avoid automated outreach</div>
+    </div>
+    <svg class="return-arrow" viewBox="0 0 120 70" aria-hidden="true">
+      <path d="M 110 56 L 30 56 Q 14 56 14 40 L 14 18" fill="none" stroke="#D4A574" stroke-width="1.2" stroke-linecap="round" stroke-opacity="0.55"/>
+      <polyline points="6,26 14,14 22,26" fill="none" stroke="#D4A574" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.55"/>
+    </svg>
+  </div>
 
   <div class="conclusion">Volume-based outreach has entered a death spiral.</div>
-  <div class="sources">Sources: MailerLite (3M+ campaigns), Blueshift, Statista/Radicati, Gartner 2024</div>
+  <div class="sources">Sources: MailerLite (3M+ campaigns), Statista/Radicati, Gartner 2024, SaaStr 2025</div>
 </div>
 
 <!-- S2: The network -->
@@ -777,10 +941,10 @@ body {
       </div>
 
       <div class="roadmap-column active-column">
-        <div class="column-header">Early traction <span class="sub-label">3 weeks, n=48</span></div>
+        <div class="column-header">Early traction</div>
         <div class="column-item">
           <div class="item-title">14.8% W/W user growth</div>
-          <div class="item-detail">Registered users, measured over 3 weeks</div>
+          <div class="item-detail">Registered users, 3 weeks, n=48</div>
         </div>
         <div class="column-item">
           <div class="item-title">3.5 invites per user</div>
@@ -789,7 +953,7 @@ body {
       </div>
 
       <div class="roadmap-column future-column">
-        <div class="column-header">12 months, $1M pre-seed</div>
+        <div class="column-header">Plan ($1M pre-seed)</div>
         <div class="column-item">
           <div class="item-title">4,000 weekly-active users</div>
           <div class="item-detail">Active = sent or answered an ask in the last 7 days</div>
@@ -802,18 +966,17 @@ body {
     </div>
 
     <div class="roadmap-rail">
-      <svg class="rail-svg" viewBox="0 0 600 40" preserveAspectRatio="none">
-        <line x1="20" y1="20" x2="300" y2="20" stroke="#D4A574" stroke-width="1.5" stroke-opacity="0.9"/>
-        <line x1="300" y1="20" x2="580" y2="20" stroke="#D4A574" stroke-width="1.5" stroke-opacity="0.6" stroke-dasharray="4 4"/>
-        <circle cx="20" cy="20" r="5" fill="#D4A574"/>
-        <circle cx="300" cy="20" r="7" fill="#D4A574" stroke="#0D0D0D" stroke-width="2"/>
-        <circle cx="300" cy="20" r="11" fill="none" stroke="#D4A574" stroke-opacity="0.3" stroke-width="1"/>
-        <circle cx="580" cy="20" r="5" fill="none" stroke="#D4A574" stroke-width="1.5"/>
-      </svg>
-      <div class="rail-labels">
-        <div class="rail-label rail-past"></div>
-        <div class="rail-label rail-now">Apr 2026 <span class="rail-mark">you are here</span></div>
-        <div class="rail-label rail-future">Apr 2027</div>
+      <div class="rail-cell rail-cell-past">
+        <span class="rail-dot dot-past"></span>
+        <div class="rail-label"></div>
+      </div>
+      <div class="rail-cell rail-cell-now">
+        <span class="rail-dot dot-now"></span>
+        <div class="rail-label rail-label-now">Apr 2026<span class="rail-mark">you are here</span></div>
+      </div>
+      <div class="rail-cell rail-cell-future">
+        <span class="rail-dot dot-future"></span>
+        <div class="rail-label">Apr 2027</div>
       </div>
     </div>
   </div>
