@@ -44,7 +44,7 @@ body {
   padding: 44px 60px 36px;
   margin-bottom: 0;
   position: relative;
-  min-height: 780px;
+  height: 820px;
   display: flex;
   flex-direction: column;
 }
@@ -330,6 +330,10 @@ body {
   background: var(--black);
   border: 1px solid var(--border);
   border-radius: 16px;
+  height: 820px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .slide-hero .brand {
@@ -948,9 +952,9 @@ body {
     min-height: 0;
     display: block;
   }
-  .slide { padding: 28px 20px 20px; min-height: 0; }
+  .slide { padding: 28px 20px 20px; height: auto; }
   .slide-title { font-size: 28px; }
-  .slide-hero { padding: 40px 20px; }
+  .slide-hero { padding: 40px 20px; height: auto; }
   .slide-hero .tagline { font-size: 32px; }
   .conclusion { font-size: 17px; }
   .bullets li { font-size: 15px; }
