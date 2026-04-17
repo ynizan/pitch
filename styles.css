@@ -1021,6 +1021,7 @@ body {
   border: 2px solid var(--gold);
   margin-bottom: 16px;
   display: block;
+  filter: grayscale(100%);
 }
 
 .team-name {
