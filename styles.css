@@ -713,36 +713,81 @@ body {
 .journey-timeline {
   position: relative;
   padding: 0;
-  margin-bottom: 28px;
+  margin: 20px 0 28px;
 }
 
-.journey-line {
-  position: absolute;
-  top: 8px;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: var(--gold);
-  opacity: 0.5;
-}
-
-.journey-stops {
+.timeline-row {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 0;
-  position: relative;
 }
 
-.journey-stop {
+.timeline-slot {
   text-align: center;
-  padding-top: 24px;
+  padding: 0 16px;
+}
+
+.timeline-above {
+  align-items: end;
+  min-height: 72px;
+}
+
+.timeline-above .timeline-slot {
+  padding-bottom: 18px;
+  align-self: end;
+}
+
+.timeline-below {
+  align-items: start;
+  min-height: 72px;
+}
+
+.timeline-below .timeline-slot {
+  padding-top: 18px;
+  align-self: start;
+}
+
+.timeline-axis {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  height: 22px;
+  align-items: center;
+}
+
+.axis-slot {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.axis-line-past,
+.axis-line-future {
+  position: absolute;
+  top: 50%;
+  height: 1px;
+  transform: translateY(-50%);
+}
+
+.axis-line-past {
+  left: 16.67%;
+  width: 33.33%;
+  background: var(--gold);
+  opacity: 0.6;
+}
+
+.axis-line-future {
+  left: 50%;
+  width: 33.33%;
+  background-image: linear-gradient(to right, var(--gold) 50%, transparent 50%);
+  background-size: 6px 1px;
+  background-repeat: repeat-x;
+  opacity: 0.6;
 }
 
 .stop-dot {
-  position: absolute;
-  top: 3px;
-  left: 50%;
-  transform: translateX(-50%);
   width: 10px;
   height: 10px;
   border-radius: 50%;
@@ -752,10 +797,9 @@ body {
 }
 
 .stop-dot.dot-now {
-  width: 14px;
-  height: 14px;
-  top: 1px;
-  box-shadow: 0 0 0 4px rgba(212, 165, 116, 0.2);
+  width: 16px;
+  height: 16px;
+  box-shadow: 0 0 0 5px rgba(212, 165, 116, 0.2);
 }
 
 .stop-dot.dot-future {
@@ -792,12 +836,12 @@ body {
   font-size: 12px;
 }
 
-.future-stop .stop-text {
+.future-slot .stop-text {
   color: var(--gray-mid);
   font-style: italic;
 }
 
-.future-stop .stop-label {
+.future-slot .stop-label {
   color: var(--gray-mid);
 }
 
@@ -1134,11 +1178,7 @@ body {
     gap: 12px;
   }
 
-  .journey-stops {
-    grid-template-columns: repeat(3, 1fr);
-    row-gap: 28px;
-  }
-
+  .timeline-slot { padding: 0 8px; }
   .stop-text { font-size: 11px; }
   .stop-label { font-size: 9px; }
 
