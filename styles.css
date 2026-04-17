@@ -27,10 +27,10 @@ body {
 }
 
 .deck {
-  max-width: 1152px;
+  max-width: 1260px;
   width: 100%;
   margin: 0 auto;
-  padding: 40px 36px 32px;
+  padding: 20px 36px;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -44,7 +44,7 @@ body {
   padding: 44px 60px 36px;
   margin-bottom: 0;
   position: relative;
-  height: 820px;
+  height: min(738px, calc(100vh - 90px));
   display: flex;
   flex-direction: column;
 }
@@ -330,7 +330,7 @@ body {
   background: var(--black);
   border: 1px solid var(--border);
   border-radius: 16px;
-  height: 820px;
+  height: min(738px, calc(100vh - 90px));
   display: flex;
   flex-direction: column;
   justify-content: center;
