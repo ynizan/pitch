@@ -831,6 +831,32 @@ body {
   letter-spacing: -0.01em;
 }
 
+.archive-links {
+  margin-top: 24px;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--gray-dark);
+  text-align: center;
+}
+
+.archive-links a {
+  color: var(--gray-mid);
+  text-decoration: none;
+  margin: 0 6px;
+  transition: color 0.15s ease;
+}
+
+.archive-links a:hover {
+  color: var(--gold);
+}
+
+.archive-links span {
+  color: var(--gray-dark);
+  opacity: 0.5;
+}
+
 /* Version ribbon for comparison slides */
 .version-ribbon {
   display: inline-block;
