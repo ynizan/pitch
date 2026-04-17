@@ -1,12 +1,11 @@
 (function () {
   const slides = [
     'index.html',
-    'slide-1-existing.html',
     'slide-1-updated.html',
     'slide-2.html',
     'slide-3.html',
-    'slide-4-existing.html',
-    'slide-4-updated.html'
+    'slide-4-updated.html',
+    'slide-5.html'
   ];
 
   function detectCurrent() {
