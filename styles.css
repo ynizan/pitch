@@ -334,6 +334,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  position: relative;
 }
 
 .slide-hero .brand {
@@ -1262,3 +1263,71 @@ body {
   .nav-card { padding: 16px 14px; }
   .nav-title { font-size: 14px; }
 }
+
+/* Copy-HTML button (agent-readable export) */
+.copy-html-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--gray-mid);
+  cursor: pointer;
+  transition: color 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+  z-index: 5;
+}
+
+.copy-html-btn:hover {
+  color: var(--gold);
+  border-color: var(--gold);
+  background: rgba(212, 165, 116, 0.08);
+}
+
+.copy-html-btn svg {
+  display: block;
+}
+
+.copy-html-btn-ok {
+  color: var(--success);
+  border-color: var(--success);
+}
+
+.copy-html-btn-err {
+  color: var(--error);
+  border-color: var(--error);
+}
+
+.copy-html-tooltip {
+  position: absolute;
+  top: 50%;
+  right: calc(100% + 8px);
+  transform: translateY(-50%);
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+  color: var(--white);
+  background: var(--black-soft);
+  border: 1px solid var(--border);
+  padding: 5px 9px;
+  border-radius: 6px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.12s ease;
+}
+
+.copy-html-btn:hover .copy-html-tooltip,
+.copy-html-btn:focus-visible .copy-html-tooltip,
+.copy-html-btn-ok .copy-html-tooltip,
+.copy-html-btn-err .copy-html-tooltip {
+  opacity: 1;
+}
+
