@@ -30,7 +30,7 @@ body {
   max-width: 1100px;
   width: 100%;
   margin: 0 auto;
-  padding: 32px 32px 24px;
+  padding: 40px 36px 32px;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -41,7 +41,7 @@ body {
   background: var(--black-mid);
   border: 1px solid var(--border);
   border-radius: 16px;
-  padding: 36px 56px 28px;
+  padding: 44px 60px 36px;
   margin-bottom: 0;
   position: relative;
 }
@@ -61,35 +61,35 @@ body {
 .slide-label {
   font-family: var(--font-display);
   font-weight: 500;
-  font-size: 12px;
+  font-size: 13px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--gold);
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 
 .slide-title {
   font-family: var(--font-display);
   font-weight: 800;
-  font-size: 36px;
+  font-size: 42px;
   line-height: 1.1;
   color: var(--white);
-  margin-bottom: 24px;
+  margin-bottom: 28px;
   letter-spacing: -0.02em;
 }
 
 .bullets {
   list-style: none;
   padding: 0;
-  margin: 0 0 20px 0;
+  margin: 0 0 24px 0;
 }
 
 .bullets li {
   font-family: var(--font-body);
-  font-size: 17px;
-  line-height: 1.5;
+  font-size: 18px;
+  line-height: 1.55;
   color: var(--white);
-  padding: 12px 0 12px 28px;
+  padding: 14px 0 14px 30px;
   position: relative;
   border-bottom: 1px solid var(--border);
 }
@@ -102,8 +102,8 @@ body {
   content: "";
   position: absolute;
   left: 0;
-  top: 21px;
-  width: 14px;
+  top: 24px;
+  width: 16px;
   height: 1px;
   background: var(--gold);
 }
@@ -156,16 +156,16 @@ body {
 
 .chat-loop {
   position: relative;
-  margin: 0 0 20px 0;
+  margin: 0 0 28px 0;
   padding: 0 8px;
-  padding-bottom: 44px;
+  padding-bottom: 52px;
 }
 
 .chat-row {
   display: flex;
   flex-direction: column;
-  gap: 4px;
-  margin-bottom: 10px;
+  gap: 5px;
+  margin-bottom: 14px;
   max-width: 78%;
 }
 
@@ -194,11 +194,11 @@ body {
   background: var(--black-soft);
   border: 1px solid var(--border);
   border-radius: 14px;
-  padding: 10px 16px;
+  padding: 14px 18px;
   font-family: var(--font-body);
-  font-size: 15px;
+  font-size: 17px;
   color: var(--white);
-  line-height: 1.4;
+  line-height: 1.45;
   width: 100%;
 }
 
@@ -226,11 +226,11 @@ body {
 
 .conclusion {
   border-top: 2px solid var(--gold);
-  padding-top: 16px;
-  margin-top: 20px;
+  padding-top: 22px;
+  margin-top: 24px;
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: 20px;
+  font-size: 24px;
   line-height: 1.3;
   color: var(--white);
   letter-spacing: -0.01em;
@@ -246,15 +246,15 @@ body {
 .comparison {
   width: 100%;
   border-collapse: collapse;
-  margin: 0 0 16px 0;
+  margin: 0 0 20px 0;
 }
 
 .comparison thead th {
   text-align: left;
-  padding: 10px 16px;
+  padding: 14px 18px;
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: 12px;
+  font-size: 13px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--gray-mid);
@@ -267,10 +267,10 @@ body {
 }
 
 .comparison tbody td {
-  padding: 9px 16px;
+  padding: 12px 18px;
   font-family: var(--font-body);
-  font-size: 14px;
-  line-height: 1.35;
+  font-size: 16px;
+  line-height: 1.4;
   border-bottom: 1px solid var(--border);
   vertical-align: top;
 }
@@ -282,7 +282,7 @@ body {
 .comparison .label {
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: 12px;
+  font-size: 13px;
   color: var(--gray-mid);
   letter-spacing: 0.02em;
   width: 26%;
@@ -314,7 +314,7 @@ body {
 
 /* Title slide */
 .slide-hero {
-  padding: 48px 56px;
+  padding: 64px 56px;
   text-align: center;
   background: var(--black);
   border: 1px solid var(--border);
@@ -324,29 +324,29 @@ body {
 .slide-hero .brand {
   font-family: var(--font-display);
   font-weight: 800;
-  font-size: 24px;
+  font-size: 26px;
   letter-spacing: -0.02em;
   color: var(--white);
-  margin-bottom: 24px;
+  margin-bottom: 32px;
 }
 
 .slide-hero .brand::after {
   content: "";
   display: block;
-  width: 40px;
+  width: 44px;
   height: 2px;
   background: var(--gold);
-  margin: 14px auto 0;
+  margin: 18px auto 0;
 }
 
 .slide-hero .tagline {
   font-family: var(--font-display);
   font-weight: 800;
-  font-size: 44px;
+  font-size: 52px;
   line-height: 1.1;
   letter-spacing: -0.02em;
   color: var(--white);
-  margin-bottom: 20px;
+  margin-bottom: 24px;
 }
 
 .slide-hero .tagline .gold {
@@ -356,10 +356,10 @@ body {
 .slide-hero .subtitle {
   font-family: var(--font-body);
   font-style: italic;
-  font-size: 18px;
+  font-size: 21px;
   color: var(--gray);
   line-height: 1.45;
-  max-width: 680px;
+  max-width: 700px;
   margin: 0 auto;
 }
 
@@ -379,16 +379,16 @@ body {
 }
 
 .sources {
-  margin-top: 12px;
-  padding-top: 8px;
+  margin-top: 16px;
+  padding-top: 12px;
   border-top: 1px solid rgba(212, 165, 116, 0.1);
   font-family: var(--font-display);
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 400;
   color: var(--gray-dark);
   letter-spacing: 0.04em;
   text-align: right;
-  line-height: 1.45;
+  line-height: 1.5;
 }
 
 .spiral {
@@ -459,18 +459,18 @@ body {
 }
 
 .roadmap {
-  margin: 0 0 16px 0;
+  margin: 0 0 24px 0;
 }
 
 .roadmap-grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  gap: 12px;
-  margin-bottom: 16px;
+  gap: 14px;
+  margin-bottom: 18px;
 }
 
 .roadmap-column {
-  padding: 14px 16px;
+  padding: 18px 20px;
   border-radius: 8px;
   background: var(--black-soft);
   border: 1px solid var(--border);
@@ -493,8 +493,8 @@ body {
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--gold);
-  margin-bottom: 12px;
-  padding-bottom: 8px;
+  margin-bottom: 16px;
+  padding-bottom: 10px;
   border-bottom: 1px solid var(--border);
 }
 
@@ -508,7 +508,7 @@ body {
 }
 
 .column-item {
-  margin-bottom: 10px;
+  margin-bottom: 14px;
 }
 
 .column-item:last-child {
@@ -626,37 +626,37 @@ body {
 .item-title {
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: 14px;
+  font-size: 15px;
   color: var(--white);
   line-height: 1.25;
-  margin-bottom: 3px;
+  margin-bottom: 4px;
 }
 
 .item-detail {
   font-family: var(--font-body);
-  font-size: 12px;
+  font-size: 13px;
   color: var(--gray);
-  line-height: 1.35;
+  line-height: 1.4;
 }
 
 .founders {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 12px;
-  margin-bottom: 20px;
+  gap: 14px;
+  margin-bottom: 28px;
 }
 
 .founder-card {
   background: var(--black-soft);
   border: 1px solid var(--border);
   border-radius: 8px;
-  padding: 14px 18px;
+  padding: 18px 22px;
 }
 
 .founder-name {
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: 16px;
+  font-size: 18px;
   color: var(--white);
   margin-bottom: 2px;
 }
@@ -664,24 +664,24 @@ body {
 .founder-role {
   font-family: var(--font-display);
   font-weight: 500;
-  font-size: 11px;
+  font-size: 12px;
   color: var(--gold);
   letter-spacing: 0.06em;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 
 .founder-bio {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 6px;
 }
 
 .founder-bullet {
   font-family: var(--font-body);
-  font-size: 13px;
+  font-size: 14px;
   color: var(--gray);
-  line-height: 1.35;
-  padding-left: 12px;
+  line-height: 1.4;
+  padding-left: 14px;
   position: relative;
 }
 
@@ -698,7 +698,7 @@ body {
 .journey-timeline {
   position: relative;
   padding: 0;
-  margin-bottom: 20px;
+  margin-bottom: 28px;
 }
 
 .journey-line {
@@ -720,7 +720,7 @@ body {
 
 .journey-stop {
   text-align: center;
-  padding-top: 22px;
+  padding-top: 24px;
 }
 
 .stop-dot {
@@ -765,16 +765,16 @@ body {
 
 .stop-text {
   font-family: var(--font-body);
-  font-size: 11px;
+  font-size: 12px;
   color: var(--gray);
-  line-height: 1.35;
+  line-height: 1.4;
 }
 
 .stop-text-now {
   color: var(--white);
   font-weight: 500;
   font-family: var(--font-display);
-  font-size: 11px;
+  font-size: 12px;
 }
 
 .future-stop .stop-text {
@@ -789,8 +789,8 @@ body {
 .deck-nav {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
-  margin-top: 28px;
+  gap: 12px;
+  margin-top: 40px;
   max-width: 900px;
   margin-left: auto;
   margin-right: auto;
@@ -798,7 +798,7 @@ body {
 
 .nav-card {
   display: block;
-  padding: 14px 14px;
+  padding: 18px 16px;
   background: var(--black-mid);
   border: 1px solid var(--border);
   border-radius: 8px;
@@ -815,17 +815,17 @@ body {
 .nav-label {
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: 10px;
+  font-size: 11px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--gold);
-  margin-bottom: 5px;
+  margin-bottom: 7px;
 }
 
 .nav-title {
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: 13px;
+  font-size: 14px;
   line-height: 1.3;
   color: var(--white);
   letter-spacing: -0.01em;
@@ -836,12 +836,12 @@ body {
   display: inline-block;
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: 9px;
+  font-size: 10px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  padding: 3px 8px;
+  padding: 4px 10px;
   border-radius: 4px;
-  margin-bottom: 10px;
+  margin-bottom: 14px;
 }
 
 .version-ribbon.existing {
@@ -917,7 +917,7 @@ body {
   letter-spacing: 0.08em;
   color: var(--gray-mid);
   text-decoration: none;
-  margin-bottom: 10px;
+  margin-bottom: 14px;
   transition: color 0.15s ease;
 }
 

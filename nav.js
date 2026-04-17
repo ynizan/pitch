@@ -9,7 +9,20 @@
     'slide-4-updated.html'
   ];
 
-  const current = (location.pathname.split('/').pop() || 'index.html').split('?')[0].split('#')[0] || 'index.html';
+  function detectCurrent() {
+    const ds = document.body && document.body.dataset && document.body.dataset.slide;
+    if (ds) {
+      const byData = ds + '.html';
+      if (slides.indexOf(byData) !== -1) return byData;
+    }
+    const path = location.pathname.toLowerCase();
+    for (let i = 0; i < slides.length; i++) {
+      if (path.endsWith('/' + slides[i]) || path.endsWith(slides[i])) return slides[i];
+    }
+    if (path === '' || path === '/' || path.endsWith('/')) return 'index.html';
+    return 'index.html';
+  }
+  const current = detectCurrent();
   const idx = slides.indexOf(current);
 
   function go(delta) {
