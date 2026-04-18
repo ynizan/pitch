@@ -480,6 +480,14 @@ body {
   margin-right: 8px;
 }
 
+.plan-source {
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--gray-dark);
+  letter-spacing: 0.02em;
+}
+
 .sources {
   margin-top: 16px;
   padding-top: 12px;
