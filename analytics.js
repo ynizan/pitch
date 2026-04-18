@@ -3,7 +3,7 @@
   // Free webhook: create a unique topic at https://ntfy.sh/your-topic-name
   // Then open https://ntfy.sh/your-topic-name in a browser to receive alerts.
   // Or point to any HTTP endpoint that accepts POST — including a Claude agent.
-  var WEBHOOK_URL = '';
+  var WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbycILjqRoi0utsiY2qstgO7ArSvDtriVsWexI-3yfeXJ4zl3WgYBUHlP1Sf36UM9Zj32g/exec';
   // ─────────────────────────────────────────────────────────────────────
 
   var SLIDES = {
@@ -90,12 +90,14 @@
     if (!WEBHOOK_URL) return;
     var isNtfy = WEBHOOK_URL.includes('ntfy.sh');
     try {
+      // Google Apps Script (and most no-CORS endpoints) require no custom headers —
+      // use text/plain so the browser skips the preflight OPTIONS request.
       fetch(WEBHOOK_URL, {
         method: 'POST',
         keepalive: true,
         headers: isNtfy
           ? { 'Content-Type': 'text/plain', 'Title': 'Pitch viewed · ' + session.viewer, 'Tags': 'bar_chart' }
-          : { 'Content-Type': 'application/json' },
+          : { 'Content-Type': 'text/plain' },
         body: isNtfy
           ? buildText(session)
           : JSON.stringify({ event: 'pitch_viewed', session: session })

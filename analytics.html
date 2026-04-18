@@ -249,7 +249,7 @@
       method: 'POST',
       headers: isNtfy
         ? { 'Content-Type': 'text/plain', 'Title': 'InTouch Pitch Report (' + sessions.length + ' sessions)', 'Tags': 'bar_chart' }
-        : { 'Content-Type': 'application/json' },
+        : { 'Content-Type': 'text/plain' },
       body: isNtfy
         ? buildText(sessions)
         : JSON.stringify({ event: 'pitch_analytics_report', sessions: sessions, exportedAt: new Date().toISOString() })
