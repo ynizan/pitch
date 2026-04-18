@@ -80,11 +80,30 @@
     e.stopPropagation();
     if (busy) return;
     busy = true;
+
+    // Kick off the async build immediately, before any await, so we can
+    // pass the Promise to ClipboardItem below (iOS Safari requires the
+    // clipboard.write() call to happen synchronously within the click handler;
+    // ClipboardItem accepts a Promise as data, which preserves that requirement).
+    const buildPromise = build();
+
     try {
-      const out = await build();
-      await copy(out);
+      if (typeof ClipboardItem !== 'undefined' && navigator.clipboard && navigator.clipboard.write) {
+        try {
+          await navigator.clipboard.write([
+            new ClipboardItem({
+              'text/plain': buildPromise.then((t) => new Blob([t], { type: 'text/plain' })),
+            }),
+          ]);
+          setTooltip('Copied!', 'ok');
+          return;
+        } catch (_) {
+          // fall through to writeText / execCommand
+        }
+      }
+      await copy(await buildPromise);
       setTooltip('Copied!', 'ok');
-    } catch (err) {
+    } catch (_) {
       setTooltip('Failed', 'err');
     } finally {
       setTimeout(() => { resetTooltip(); busy = false; }, 1500);
