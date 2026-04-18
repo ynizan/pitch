@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Analytics · InTouch Pitch</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --black:   #0D0D0D;
+    --panel:   #111;
+    --border:  #1e1e1e;
+    --gold:    #D4A574;
+    --gold-dim:#8a6b48;
+    --white:   #ffffff;
+    --gray:    #888;
+    --gray-mid:#555;
+  }
+  html, body { min-height: 100vh; background: var(--black); color: var(--white); font-family: Manrope, sans-serif; }
+  a { color: var(--gold); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  .wrap { max-width: 860px; margin: 0 auto; padding: 48px 24px 80px; }
+
+  /* Header */
+  .header { margin-bottom: 40px; }
+  .brand  { font-size: 11px; color: var(--gold); letter-spacing: .12em; text-transform: uppercase; margin-bottom: 12px; }
+  .header h1 { font-size: 28px; font-weight: 800; margin-bottom: 6px; }
+  .header p  { color: var(--gray); font-size: 14px; }
+  .back-link { display: inline-block; font-size: 13px; color: var(--gray); margin-top: 12px; }
+  .back-link:hover { color: var(--gold); }
+
+  /* Summary cards */
+  .summary { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 40px; }
+  .stat-card { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 20px; }
+  .stat-card .val { font-size: 32px; font-weight: 800; color: var(--gold); line-height: 1; margin-bottom: 4px; }
+  .stat-card .lbl { font-size: 12px; color: var(--gray); text-transform: uppercase; letter-spacing: .08em; }
+
+  /* Webhook bar */
+  .webhook-bar {
+    background: var(--panel); border: 1px solid var(--border); border-radius: 12px;
+    padding: 20px; margin-bottom: 32px; display: flex; gap: 10px; flex-wrap: wrap; align-items: center;
+  }
+  .webhook-bar label { font-size: 12px; color: var(--gray); text-transform: uppercase; letter-spacing: .08em; flex: 0 0 100%; }
+  .webhook-bar input {
+    flex: 1 1 280px; background: var(--black); border: 1px solid var(--border); color: var(--white);
+    padding: 10px 14px; border-radius: 8px; font-size: 14px; font-family: inherit; outline: none;
+    transition: border-color .2s;
+  }
+  .webhook-bar input:focus { border-color: var(--gold); }
+  .webhook-bar input::placeholder { color: var(--gray-mid); }
+  .btn {
+    padding: 10px 18px; border-radius: 8px; font-size: 13px; font-weight: 700; font-family: inherit;
+    cursor: pointer; border: none; transition: opacity .15s;
+  }
+  .btn:hover { opacity: .85; }
+  .btn-gold    { background: var(--gold); color: #000; }
+  .btn-outline { background: transparent; border: 1px solid var(--border); color: var(--gray); }
+  .btn-danger  { background: transparent; border: 1px solid #8b2e2e; color: #c74444; }
+
+  /* Sessions */
+  .sessions-header {
+    display: flex; align-items: baseline; justify-content: space-between;
+    margin-bottom: 16px; flex-wrap: wrap; gap: 8px;
+  }
+  .sessions-header h2 { font-size: 16px; font-weight: 700; }
+
+  .session-card {
+    background: var(--panel); border: 1px solid var(--border); border-radius: 12px;
+    margin-bottom: 16px; overflow: hidden;
+  }
+  .session-head {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 16px 20px; border-bottom: 1px solid var(--border); flex-wrap: wrap; gap: 8px;
+  }
+  .session-viewer { font-size: 15px; font-weight: 700; }
+  .session-meta   { font-size: 12px; color: var(--gray); }
+  .session-badge  {
+    font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+    padding: 3px 8px; border-radius: 20px; background: rgba(212,165,116,.12); color: var(--gold);
+  }
+
+  .slide-rows { padding: 8px 0; }
+  .slide-row {
+    display: grid; grid-template-columns: 160px 1fr 52px;
+    align-items: center; gap: 12px; padding: 8px 20px;
+  }
+  .slide-row:hover { background: rgba(255,255,255,.025); }
+  .slide-label { font-size: 13px; color: var(--gray); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .slide-bar-wrap { height: 6px; background: rgba(255,255,255,.06); border-radius: 3px; overflow: hidden; }
+  .slide-bar { height: 100%; border-radius: 3px; background: var(--gold); transition: width .3s; }
+  .slide-dur { font-size: 12px; color: var(--gray); text-align: right; font-variant-numeric: tabular-nums; }
+
+  .empty-state { text-align: center; padding: 64px 24px; color: var(--gray); }
+  .empty-state h2 { font-size: 18px; margin-bottom: 8px; color: var(--white); }
+  .empty-state p  { font-size: 14px; line-height: 1.6; }
+
+  @media (max-width: 560px) {
+    .summary { grid-template-columns: 1fr 1fr; }
+    .slide-row { grid-template-columns: 120px 1fr 44px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="header">
+    <div class="brand">InTouch</div>
+    <h1>Pitch Analytics</h1>
+    <p>Slide-by-slide viewer data — stored locally in this browser</p>
+    <a class="back-link" href="index.html">← Back to pitch</a>
+  </header>
+
+  <div class="summary" id="summary"></div>
+
+  <div class="webhook-bar">
+    <label>Send report to webhook</label>
+    <input id="webhook-url" type="url"
+      placeholder="https://ntfy.sh/your-topic  or  https://your-claude-agent/webhook" />
+    <button class="btn btn-gold" id="send-btn">Send Report</button>
+    <button class="btn btn-outline" id="export-btn">Export JSON</button>
+  </div>
+
+  <div class="sessions-header">
+    <h2>Sessions</h2>
+    <button class="btn btn-danger" id="clear-btn">Clear All Data</button>
+  </div>
+
+  <div id="sessions-list"></div>
+
+</div>
+
+<script>
+(function () {
+  var LS_KEY = 'pitch_analytics';
+
+  function load() {
+    try { return JSON.parse(localStorage.getItem(LS_KEY) || '[]'); } catch (e) { return []; }
+  }
+
+  function fmtDur(s) {
+    if (s < 60) return s + 's';
+    return Math.floor(s / 60) + 'm ' + (s % 60) + 's';
+  }
+  function fmtDate(iso) {
+    return new Date(iso).toLocaleString([], { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
+  }
+  function totalDur(session) {
+    return session.slides.reduce(function (a, s) { return a + (s.duration || 0); }, 0);
+  }
+
+  function renderSummary(sessions) {
+    var viewers = new Set(sessions.map(function (s) { return s.viewer; })).size;
+    var totalTime = sessions.reduce(function (a, s) { return a + totalDur(s); }, 0);
+    var avgTime = sessions.length ? Math.round(totalTime / sessions.length) : 0;
+    document.getElementById('summary').innerHTML = [
+      card(sessions.length, 'Sessions'),
+      card(viewers, 'Unique viewers'),
+      card(fmtDur(avgTime), 'Avg. time')
+    ].join('');
+  }
+  function card(val, lbl) {
+    return '<div class="stat-card"><div class="val">' + val + '</div><div class="lbl">' + lbl + '</div></div>';
+  }
+
+  function renderSessions(sessions) {
+    var el = document.getElementById('sessions-list');
+    if (!sessions.length) {
+      el.innerHTML = '<div class="empty-state">' +
+        '<h2>No sessions yet</h2>' +
+        '<p>Share a pitch link with viewers. Analytics appear here once someone opens the deck.</p>' +
+        '<p style="margin-top:12px">Tip: add <strong style="color:#D4A574">?viewer=Name</strong> to the URL to pre-fill their name.</p>' +
+        '</div>';
+      return;
+    }
+
+    var sorted = sessions.slice().sort(function (a, b) {
+      return new Date(b.startedAt) - new Date(a.startedAt);
+    });
+
+    // Find max duration across all slides for bar scaling
+    var maxDur = sorted.reduce(function (mx, s) {
+      return s.slides.reduce(function (m, r) { return Math.max(m, r.duration || 0); }, mx);
+    }, 1);
+
+    el.innerHTML = sorted.map(function (session) {
+      var dur = totalDur(session);
+      var rows = session.slides.map(function (s) {
+        var pct = Math.round(((s.duration || 0) / maxDur) * 100);
+        return '<div class="slide-row">' +
+          '<div class="slide-label">' + esc(s.name) + '</div>' +
+          '<div class="slide-bar-wrap"><div class="slide-bar" style="width:' + pct + '%"></div></div>' +
+          '<div class="slide-dur">' + fmtDur(s.duration || 0) + '</div>' +
+          '</div>';
+      }).join('');
+
+      return '<div class="session-card">' +
+        '<div class="session-head">' +
+          '<div>' +
+            '<div class="session-viewer">' + esc(session.viewer || 'Anonymous') + '</div>' +
+            '<div class="session-meta">' + fmtDate(session.startedAt) + ' · ' + session.slides.length + ' slides</div>' +
+          '</div>' +
+          '<div>' +
+            '<span class="session-badge">' + fmtDur(dur) + ' total</span>' +
+          '</div>' +
+        '</div>' +
+        '<div class="slide-rows">' + rows + '</div>' +
+        '</div>';
+    }).join('');
+  }
+
+  function esc(s) {
+    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
+  function buildText(sessions) {
+    return sessions.map(function (s) {
+      var lines = [
+        'Viewer: ' + s.viewer,
+        'Started: ' + new Date(s.startedAt).toLocaleString(),
+        'Total time: ' + fmtDur(totalDur(s)),
+        ''
+      ];
+      s.slides.forEach(function (r) { lines.push('  ' + r.name + ': ' + fmtDur(r.duration || 0)); });
+      return lines.join('\n');
+    }).join('\n\n---\n\n');
+  }
+
+  function render() {
+    var sessions = load();
+    renderSummary(sessions);
+    renderSessions(sessions);
+  }
+
+  // Send webhook
+  document.getElementById('send-btn').addEventListener('click', function () {
+    var url = document.getElementById('webhook-url').value.trim();
+    if (!url) { alert('Enter a webhook URL first.'); return; }
+    var sessions = load();
+    if (!sessions.length) { alert('No sessions to send.'); return; }
+    var isNtfy = url.includes('ntfy.sh');
+    var btn = this;
+    btn.textContent = 'Sending…';
+    btn.disabled = true;
+    fetch(url, {
+      method: 'POST',
+      headers: isNtfy
+        ? { 'Content-Type': 'text/plain', 'Title': 'InTouch Pitch Report (' + sessions.length + ' sessions)', 'Tags': 'bar_chart' }
+        : { 'Content-Type': 'application/json' },
+      body: isNtfy
+        ? buildText(sessions)
+        : JSON.stringify({ event: 'pitch_analytics_report', sessions: sessions, exportedAt: new Date().toISOString() })
+    }).then(function (r) {
+      btn.textContent = r.ok ? 'Sent ✓' : 'Failed ✗';
+      setTimeout(function () { btn.textContent = 'Send Report'; btn.disabled = false; }, 3000);
+    }).catch(function () {
+      btn.textContent = 'Error ✗';
+      setTimeout(function () { btn.textContent = 'Send Report'; btn.disabled = false; }, 3000);
+    });
+  });
+
+  // Export JSON
+  document.getElementById('export-btn').addEventListener('click', function () {
+    var data = JSON.stringify(load(), null, 2);
+    var blob = new Blob([data], { type: 'application/json' });
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'pitch-analytics-' + new Date().toISOString().slice(0, 10) + '.json';
+    a.click();
+  });
+
+  // Clear
+  document.getElementById('clear-btn').addEventListener('click', function () {
+    if (!confirm('Delete all analytics data? This cannot be undone.')) return;
+    localStorage.removeItem(LS_KEY);
+    render();
+  });
+
+  render();
+})();
+</script>
+</body>
+</html>
