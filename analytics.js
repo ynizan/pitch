@@ -122,16 +122,12 @@
         '<h2 style="color:#fff;font-size:20px;font-weight:700;margin:0 0 8px">Who are you?</h2>',
         '<p style="color:#777;font-size:14px;line-height:1.5;margin:0 0 24px">Your name lets the founders know who\'s reviewing this deck.</p>',
         '<input id="pan-inp" type="text" placeholder="Your name" autocomplete="name" style="width:100%;box-sizing:border-box;background:#0d0d0d;border:1px solid #333;color:#fff;padding:12px 14px;border-radius:8px;font-size:15px;font-family:inherit;outline:none;margin-bottom:16px;transition:border-color .2s">',
-        '<div style="display:flex;gap:8px">',
-          '<button id="pan-skip" style="flex:1;padding:11px;background:transparent;border:1px solid #333;color:#666;border-radius:8px;cursor:pointer;font-size:13px;font-family:inherit">Skip</button>',
-          '<button id="pan-go" style="flex:2;padding:11px;background:#D4A574;border:none;color:#000;border-radius:8px;cursor:pointer;font-size:14px;font-weight:700;font-family:inherit">Continue \u2192</button>',
-        '</div>',
+        '<button id="pan-go" style="width:100%;padding:11px;background:#D4A574;border:none;color:#000;border-radius:8px;cursor:pointer;font-size:14px;font-weight:700;font-family:inherit">Continue \u2192</button>',
       '</div>'
     ].join('');
     document.body.appendChild(o);
 
     var inp  = document.getElementById('pan-inp');
-    var skip = document.getElementById('pan-skip');
     var go   = document.getElementById('pan-go');
 
     inp.addEventListener('focus', function () { inp.style.borderColor = '#D4A574'; });
@@ -144,10 +140,8 @@
       cb(name);
     }
     go.addEventListener('click',   function () { done(inp.value); });
-    skip.addEventListener('click', function () { done(''); });
     inp.addEventListener('keydown', function (e) {
-      if (e.key === 'Enter')  done(inp.value);
-      if (e.key === 'Escape') done('');
+      if (e.key === 'Enter') done(inp.value);
       e.stopPropagation();
     });
     o.addEventListener('click',       function (e) { e.stopPropagation(); });
