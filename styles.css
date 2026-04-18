@@ -346,6 +346,22 @@ body {
   position: relative;
 }
 
+.slide-hero .wordmark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-bottom: 32px;
+}
+
+.slide-hero .wordmark-text {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 26px;
+  letter-spacing: -0.02em;
+  color: var(--white);
+}
+
 .slide-hero .raise-kicker {
   font-family: var(--font-body);
   font-size: 11px;
@@ -353,25 +369,7 @@ body {
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--gold);
-  margin-bottom: 16px;
-}
-
-.slide-hero .brand {
-  font-family: var(--font-display);
-  font-weight: 800;
-  font-size: 26px;
-  letter-spacing: -0.02em;
-  color: var(--white);
-  margin-bottom: 32px;
-}
-
-.slide-hero .brand::after {
-  content: "";
-  display: block;
-  width: 44px;
-  height: 2px;
-  background: var(--gold);
-  margin: 18px auto 0;
+  margin-top: 28px;
 }
 
 .slide-hero .tagline {
