@@ -1,3 +1,6 @@
+// Auto-load analytics so every slide is covered without touching individual HTML files
+(function () { var s = document.createElement('script'); s.src = 'analytics.js'; document.head.appendChild(s); })();
+
 (function () {
   const slides = [
     'index.html',
