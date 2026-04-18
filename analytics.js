@@ -184,9 +184,7 @@
   var known = resolveViewer();
   if (known) {
     start(known);
-  } else if (curFile === 'index.html') {
-    setTimeout(function () { showPopup(start); }, 400);
   } else {
-    start('Anonymous');
+    setTimeout(function () { showPopup(start); }, 400);
   }
 })();
