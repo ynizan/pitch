@@ -9,76 +9,6 @@
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@400;500;600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="stylesheet" href="styles.css">
-<style>
-.tam-table {
-  width: 100%;
-  max-width: 520px;
-  border-collapse: collapse;
-  margin: 0 0 32px 0;
-}
-.tam-table td {
-  padding: 9px 0;
-  font-family: var(--font-body);
-  font-size: 15px;
-  line-height: 1.4;
-  border-bottom: 1px solid rgba(212, 165, 116, 0.12);
-  vertical-align: middle;
-}
-.tam-table tr:last-child td {
-  border-bottom: none;
-}
-.tam-label {
-  color: var(--gray);
-  width: 58%;
-}
-.tam-value {
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 15px;
-  color: var(--white);
-  width: 18%;
-  text-align: right;
-  letter-spacing: -0.01em;
-}
-.tam-source {
-  color: var(--gray-dark);
-  font-family: var(--font-display);
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  width: 24%;
-  text-align: right;
-}
-.tam-table .row-total td {
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-  padding-top: 10px;
-  padding-bottom: 10px;
-}
-.tam-table .row-total .tam-value {
-  color: var(--gold);
-}
-.tam-table .row-spacer td {
-  padding: 4px 0;
-  border-bottom: none;
-}
-.tam-table .row-addressable td {
-  padding-top: 10px;
-  padding-bottom: 10px;
-}
-.tam-table .row-addressable .tam-label {
-  color: var(--white);
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 15px;
-  letter-spacing: -0.01em;
-}
-.tam-table .row-addressable .tam-value {
-  color: var(--gold);
-  font-size: 18px;
-}
-</style>
 </head>
 <body data-slide="slide-1-updated">
 
@@ -99,36 +29,10 @@
     <li><strong>81%</strong> already spend 1+ hours/week trying to scale their network — and get poor results</li>
   </ul>
 
-  <table class="tam-table">
-    <tbody>
-      <tr>
-        <td class="tam-label">Employees at firms under 20</td>
-        <td class="tam-value">16%</td>
-        <td class="tam-source">Census Bureau</td>
-      </tr>
-      <tr>
-        <td class="tam-label">Self-employed</td>
-        <td class="tam-value">10%</td>
-        <td class="tam-source">BLS</td>
-      </tr>
-      <tr class="row-total">
-        <td class="tam-label">Total</td>
-        <td class="tam-value">26%</td>
-        <td class="tam-source"></td>
-      </tr>
-      <tr class="row-spacer"><td colspan="3"></td></tr>
-      <tr>
-        <td class="tam-label">Professionals worldwide</td>
-        <td class="tam-value">1.3B</td>
-        <td class="tam-source">LinkedIn</td>
-      </tr>
-      <tr class="row-addressable">
-        <td class="tam-label">Addressable market</td>
-        <td class="tam-value">338M</td>
-        <td class="tam-source"></td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="plan-milestone">
+    <div class="plan-label">The Math</div>
+    <div class="plan-row">16% at firms under 20 <span class="plan-source">(Census)</span> + 10% self-employed <span class="plan-source">(BLS)</span> = 26% × 1.3B professionals <span class="plan-source">(LinkedIn)</span> = <strong>338M</strong></div>
+  </div>
 
   <div class="conclusion">338 million professionals can't scale their primary source of business.</div>
   <div class="sources">Sources: Firework/industry data, LinkedIn SMB report, InTouch interviews (n=26), US Census Bureau, BLS</div>
