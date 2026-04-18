@@ -9,66 +9,77 @@
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@400;500;600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="stylesheet" href="styles.css">
+<style>
+.channel-table .ai-pct {
+  color: var(--gold);
+  font-weight: 600;
+  width: 28%;
+}
+.channel-table .result {
+  color: var(--gray);
+  width: 38%;
+}
+.slide-lead {
+  font-family: var(--font-body);
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--gray);
+  margin-bottom: 28px;
+}
+.slide-lead strong {
+  color: var(--white);
+}
+</style>
 </head>
 <body data-slide="slide-2">
 
 <div class="deck">
 
-<a href="index.html" class="back-link">Back to overview</a>
+<div class="slide-topbar">
+  <a href="index.html" class="back-link">Back to overview</a>
+</div>
 
 <div class="slide" id="slide-2">
   <div class="slide-number">02 / 05</div>
-  <div class="slide-label">The network</div>
-  <h2 class="slide-title">Trust, not volume</h2>
+  <div class="slide-label">The problem</div>
+  <h2 class="slide-title">Every channel<br/>is closing</h2>
 
-  <table class="comparison">
+  <p class="slide-lead">AI is flooding every channel (30–54%). But <strong>customer acquisition cost rose 40% in two years.</strong></p>
+
+  <p class="slide-lead">Here's why:</p>
+
+  <table class="comparison channel-table">
     <thead>
       <tr>
-        <th></th>
-        <th>LinkedIn</th>
-        <th class="intouch">InTouch</th>
+        <th>Channel</th>
+        <th>AI penetration</th>
+        <th>Result</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td class="label">Positioning</td>
-        <td class="volume">Volume network</td>
-        <td class="intouch"><strong>Trust network</strong></td>
+        <td class="label">Cold email</td>
+        <td class="ai-pct">30%</td>
+        <td class="result">Reply rates: 7% → 5.1% in one year</td>
       </tr>
       <tr>
-        <td class="label">Avg connections</td>
-        <td class="volume">930</td>
-        <td class="intouch"><strong>64</strong></td>
+        <td class="label">LinkedIn content</td>
+        <td class="ai-pct">54%</td>
+        <td class="result">Organic reach down 50% YoY</td>
       </tr>
       <tr>
-        <td class="label">% with real interactions</td>
-        <td class="volume">17%</td>
-        <td class="intouch"><strong>100%</strong><br/><span style="font-size: 13px; font-weight: 400; color: var(--gray-mid); font-style: italic;">verified by interaction history</span></td>
-      </tr>
-      <tr>
-        <td class="label">Built for AI agents</td>
-        <td class="volume">No</td>
-        <td class="intouch"><strong>Yes</strong></td>
-      </tr>
-      <tr>
-        <td class="label">Users come for</td>
-        <td class="volume">Research, direct outreach</td>
-        <td class="intouch"><strong>Intros, recommendations, trusted advice</strong></td>
-      </tr>
-      <tr>
-        <td class="label">Finding warm paths</td>
-        <td class="volume">Hours of research, "do you really know X?", 81% frustrated</td>
-        <td class="intouch"><strong>7.04 warm paths surfaced per week</strong></td>
+        <td class="label">Newsletters</td>
+        <td class="ai-pct">50%</td>
+        <td class="result">Unsubscribes tripled in 12 months</td>
       </tr>
     </tbody>
   </table>
 
-  <div class="conclusion">When the goal is networking, 64 real connections beat 930 weak ones.</div>
-  <div class="sources">Sources: Expandi/EngageKit 2025, LinkedIn public data, InTouch product data</div>
+  <div class="conclusion">For small teams, every door to new business is closing except one: who they already know.</div>
+  <div class="sources">Sources: Sales So, Originality.ai, Straits Research, MailerLite, AuthoredUp/Sales So, Phoenix Strategy Group</div>
 </div>
 
 </div>
-
 
 <script src="nav.js"></script>
 </body>
