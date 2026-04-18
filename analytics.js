@@ -5,7 +5,7 @@
   // ─────────────────────────────────────────────────────────────────────
 
   var SLIDES = {
-    'index.html':           '00 \u00b7 Cover',
+    'index.html':           '00 - Cover',
     'slide-1-updated.html': '01 \u00b7 The Market',
     'slide-2.html':         '02 \u00b7 The Network',
     'slide-3.html':         '03 \u00b7 The Opportunity',
