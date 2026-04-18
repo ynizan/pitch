@@ -350,8 +350,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 14px;
-  margin-bottom: 32px;
+  gap: 10px;
+  margin-bottom: 18px;
 }
 
 .slide-hero .wordmark-text {
@@ -362,6 +362,13 @@ body {
   color: var(--white);
 }
 
+.slide-hero .gold-rule {
+  width: 44px;
+  height: 2px;
+  background: var(--gold);
+  margin: 18px auto 32px;
+}
+
 .slide-hero .raise-kicker {
   font-family: var(--font-body);
   font-size: 11px;
@@ -369,7 +376,9 @@ body {
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--gold);
-  margin-top: 28px;
+  margin-top: 0;
+  padding-top: 40px;
+  border-top: 1px solid var(--gold);
 }
 
 .slide-hero .tagline {
