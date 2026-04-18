@@ -20,8 +20,19 @@
   var LS_KEY = 'pitch_analytics';
   var SS_KEY = 'pitch_session';
 
-  var rawFile = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
-  var curFile = SLIDES[rawFile] !== undefined ? rawFile : 'index.html';
+  // Prefer the explicit data-slide attribute on <body> — pathname can be unreliable
+  // depending on hosting rewrites, trailing slashes, etc.
+  function detectFile() {
+    var ds = document.body && document.body.dataset && document.body.dataset.slide;
+    if (ds) {
+      var candidate = ds + '.html';
+      if (SLIDES[candidate]) return candidate;
+    }
+    var raw = (location.pathname.split('/').pop() || '').toLowerCase();
+    if (SLIDES[raw]) return raw;
+    return 'index.html';
+  }
+  var curFile = detectFile();
   var curName = SLIDES[curFile];
 
   // ── Active-time tracking (ignores backgrounded tabs) ─────────────────
