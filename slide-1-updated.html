@@ -9,6 +9,76 @@
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@400;500;600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="stylesheet" href="styles.css">
+<style>
+.tam-table {
+  width: 100%;
+  max-width: 520px;
+  border-collapse: collapse;
+  margin: 0 0 32px 0;
+}
+.tam-table td {
+  padding: 9px 0;
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.4;
+  border-bottom: 1px solid rgba(212, 165, 116, 0.12);
+  vertical-align: middle;
+}
+.tam-table tr:last-child td {
+  border-bottom: none;
+}
+.tam-label {
+  color: var(--gray);
+  width: 58%;
+}
+.tam-value {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--white);
+  width: 18%;
+  text-align: right;
+  letter-spacing: -0.01em;
+}
+.tam-source {
+  color: var(--gray-dark);
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  width: 24%;
+  text-align: right;
+}
+.tam-table .row-total td {
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.tam-table .row-total .tam-value {
+  color: var(--gold);
+}
+.tam-table .row-spacer td {
+  padding: 4px 0;
+  border-bottom: none;
+}
+.tam-table .row-addressable td {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.tam-table .row-addressable .tam-label {
+  color: var(--white);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: -0.01em;
+}
+.tam-table .row-addressable .tam-value {
+  color: var(--gold);
+  font-size: 18px;
+}
+</style>
 </head>
 <body data-slide="slide-1-updated">
 
@@ -20,18 +90,48 @@
 
 <div class="slide" id="slide-1">
   <div class="slide-number">01 / 05</div>
-  <div class="slide-label">The market</div>
-  <h2 class="slide-title">270 million<br/>run on who they know</h2>
+  <div class="slide-label">The Networkers</div>
+  <h2 class="slide-title">338 million run on who they know</h2>
 
   <ul class="bullets">
-    <li><strong>30%</strong> of the professional workforce work in companies under 20</li>
     <li><strong>82% of small businesses</strong> say referrals are their primary source of new customers</li>
     <li>Small business owners are <strong>2× more active on LinkedIn</strong> than average</li>
     <li><strong>81%</strong> already spend 1+ hours/week trying to scale their network — and get poor results</li>
   </ul>
 
-  <div class="conclusion">270 million professionals can't scale their primary source of business.</div>
-  <div class="sources">Sources: Firework/industry data, LinkedIn SMB report, InTouch interviews (n=26), US Census Bureau, BLS<br/>30% of workforce in companies &lt;20 + self-employed + in transition (Census/BLS) × 900M calendar users (Google/Microsoft) = 270M</div>
+  <table class="tam-table">
+    <tbody>
+      <tr>
+        <td class="tam-label">Employees at firms under 20</td>
+        <td class="tam-value">16%</td>
+        <td class="tam-source">Census Bureau</td>
+      </tr>
+      <tr>
+        <td class="tam-label">Self-employed</td>
+        <td class="tam-value">10%</td>
+        <td class="tam-source">BLS</td>
+      </tr>
+      <tr class="row-total">
+        <td class="tam-label">Total</td>
+        <td class="tam-value">26%</td>
+        <td class="tam-source"></td>
+      </tr>
+      <tr class="row-spacer"><td colspan="3"></td></tr>
+      <tr>
+        <td class="tam-label">Professionals worldwide</td>
+        <td class="tam-value">1.3B</td>
+        <td class="tam-source">LinkedIn</td>
+      </tr>
+      <tr class="row-addressable">
+        <td class="tam-label">Addressable market</td>
+        <td class="tam-value">338M</td>
+        <td class="tam-source"></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="conclusion">338 million professionals can't scale their primary source of business.</div>
+  <div class="sources">Sources: Firework/industry data, LinkedIn SMB report, InTouch interviews (n=26), US Census Bureau, BLS</div>
 </div>
 
 </div>
