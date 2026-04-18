@@ -85,13 +85,14 @@
   // ── Webhook ───────────────────────────────────────────────────────────
   function dispatch(session) {
     if (!WEBHOOK_URL) return;
+    var body = JSON.stringify({ event: 'pitch_viewed', session: session });
     try {
-      fetch(WEBHOOK_URL, {
-        method: 'POST',
-        keepalive: true,
-        headers: { 'Content-Type': 'text/plain' },
-        body: JSON.stringify({ event: 'pitch_viewed', session: session })
-      });
+      // sendBeacon is designed for beforeunload — browser guarantees delivery even mid-navigation
+      if (navigator.sendBeacon) {
+        navigator.sendBeacon(WEBHOOK_URL, new Blob([body], { type: 'text/plain' }));
+      } else {
+        fetch(WEBHOOK_URL, { method: 'POST', keepalive: true, headers: { 'Content-Type': 'text/plain' }, body: body });
+      }
     } catch (e) {}
   }
 
