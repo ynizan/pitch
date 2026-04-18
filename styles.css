@@ -346,22 +346,52 @@ body {
   position: relative;
 }
 
-.slide-hero .brand {
+.slide-hero .wordmark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.slide-hero .wordmark-text {
   font-family: var(--font-display);
   font-weight: 800;
   font-size: 26px;
   letter-spacing: -0.02em;
   color: var(--white);
-  margin-bottom: 32px;
 }
 
-.slide-hero .brand::after {
+.slide-hero .gold-rule {
+  width: 44px;
+  height: 2px;
+  background: var(--gold);
+  margin: 18px auto 32px;
+}
+
+.slide-hero .raise-kicker {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-top: 40px;
+  padding-top: 40px;
+  position: relative;
+}
+
+.slide-hero .raise-kicker::before {
   content: "";
   display: block;
   width: 44px;
   height: 2px;
   background: var(--gold);
-  margin: 18px auto 0;
+  margin: 0 auto 24px;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .slide-hero .tagline {
