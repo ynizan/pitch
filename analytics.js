@@ -1,6 +1,6 @@
 (function () {
   // ── CONFIG ────────────────────────────────────────────────────────────
-  var WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycby6IB0BB4U8UU1T_mfSSSLf7y-7ZU-tG7Xm8o-W1T31igxfH30IVIGoSbjxuhkkh48juA/exec';
+  var WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbzfaY28krCkRJlSoasB6r04DdYNvbopozxkmnMLvEOD6973bMyRpBFkg-XCBSH9_f70qg/exec';
   var MAX_SLIDE_SECS = 30 * 60; // cap at 30 min — handles tabs left open for days
   // ─────────────────────────────────────────────────────────────────────
 
