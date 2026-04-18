@@ -57,8 +57,12 @@
 
   async function copy(text) {
     if (navigator.clipboard && navigator.clipboard.writeText) {
-      await navigator.clipboard.writeText(text);
-      return;
+      try {
+        await navigator.clipboard.writeText(text);
+        return;
+      } catch (_) {
+        // fall through to execCommand fallback
+      }
     }
     const ta = document.createElement('textarea');
     ta.value = text;
@@ -67,7 +71,7 @@
     ta.style.opacity = '0';
     document.body.appendChild(ta);
     ta.select();
-    document.execCommand('copy');
+    if (!document.execCommand('copy')) throw new Error('copy failed');
     document.body.removeChild(ta);
   }
 
