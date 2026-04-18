@@ -1,4 +1,7 @@
 (function () {
+  if (window.__pitchAnalyticsLoaded) return;
+  window.__pitchAnalyticsLoaded = true;
+
   // ── CONFIG ────────────────────────────────────────────────────────────
   var WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbwVQQ73tge2QdXaFirAUIM0q9BmNnoV5v45OwIejBkxpMVsl0b-k5XP-RoEVEWNpWM-jw/exec';
   var MAX_SLIDE_SECS = 30 * 60; // cap at 30 min — handles tabs left open for days
@@ -142,17 +145,29 @@
   }
 
   // ── Boot ──────────────────────────────────────────────────────────────
+  function flush(session) { stamp(session); persist(session); dispatch(session); }
+
   function start(viewer) {
     var session = loadSession() || createSession(viewer);
     session.viewer = session.viewer || viewer;
     persist(session);
 
-    window.addEventListener('beforeunload', function () {
-      stamp(session);
-      persist(session);
-      dispatch(session);
+    // Fire immediately so even a 1-second bounce is captured
+    dispatch(session);
+
+    // Heartbeat every 3s — upserts the same row, so no duplicates
+    setInterval(function () { flush(session); }, 3000);
+
+    // Fires on mobile when tab is backgrounded (more reliable than beforeunload on iOS/Android)
+    document.addEventListener('visibilitychange', function () {
+      if (document.visibilityState === 'hidden') flush(session);
     });
-    setInterval(function () { stamp(session); persist(session); }, 15000);
+
+    // Fires on page hide (covers bfcache navigation)
+    window.addEventListener('pagehide', function () { flush(session); });
+
+    // Last-ditch — sendBeacon inside
+    window.addEventListener('beforeunload', function () { flush(session); });
   }
 
   var known = resolveViewer();
