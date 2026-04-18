@@ -134,7 +134,66 @@
 </div>
 
 <script>
+// Password gate — SHA-256 hashes only, plaintext never stored here
 (function () {
+  var AUTH_KEY = 'pitch_auth_ok';
+  var HASHES = [
+    'f0e99db5e0073c619548f6082de77a57e85f7197a79b133e34a6bd8a2b8f3218',
+    '287656c50ec99bbe5caf1099229887a5cc20cebcb771a1f40b1da6bc3ee5d815'
+  ];
+
+  function sha256(str) {
+    return crypto.subtle.digest('SHA-256', new TextEncoder().encode(str))
+      .then(function (buf) {
+        return Array.from(new Uint8Array(buf)).map(function (b) { return b.toString(16).padStart(2, '0'); }).join('');
+      });
+  }
+
+  function showLogin() {
+    document.body.innerHTML = [
+      '<div style="min-height:100vh;display:flex;align-items:center;justify-content:center;background:#0d0d0d;font-family:Manrope,sans-serif">',
+        '<div style="background:#111;border:1px solid #D4A574;border-radius:16px;padding:40px 36px;max-width:340px;width:calc(100% - 48px);text-align:center">',
+          '<div style="font-size:11px;color:#D4A574;letter-spacing:.12em;text-transform:uppercase;margin-bottom:16px">InTouch</div>',
+          '<h2 style="color:#fff;font-size:20px;font-weight:700;margin:0 0 24px">Analytics</h2>',
+          '<input id="pw-inp" type="password" placeholder="Password" style="width:100%;box-sizing:border-box;background:#0d0d0d;border:1px solid #333;color:#fff;padding:12px 14px;border-radius:8px;font-size:15px;font-family:inherit;outline:none;margin-bottom:12px;transition:border-color .2s">',
+          '<div id="pw-err" style="color:#c74444;font-size:13px;min-height:18px;margin-bottom:12px"></div>',
+          '<button id="pw-btn" style="width:100%;padding:12px;background:#D4A574;border:none;color:#000;border-radius:8px;cursor:pointer;font-size:14px;font-weight:700;font-family:inherit">Unlock</button>',
+        '</div>',
+      '</div>'
+    ].join('');
+
+    var inp = document.getElementById('pw-inp');
+    var btn = document.getElementById('pw-btn');
+    var err = document.getElementById('pw-err');
+
+    inp.addEventListener('focus', function () { inp.style.borderColor = '#D4A574'; });
+    inp.addEventListener('blur',  function () { inp.style.borderColor = '#333'; });
+
+    function attempt() {
+      var pw = inp.value;
+      if (!pw) return;
+      btn.disabled = true;
+      sha256(pw).then(function (hash) {
+        if (HASHES.indexOf(hash) !== -1) {
+          sessionStorage.setItem(AUTH_KEY, '1');
+          location.reload();
+        } else {
+          err.textContent = 'Incorrect password';
+          inp.value = '';
+          inp.focus();
+          btn.disabled = false;
+        }
+      });
+    }
+    btn.addEventListener('click', attempt);
+    inp.addEventListener('keydown', function (e) { if (e.key === 'Enter') attempt(); });
+    setTimeout(function () { inp.focus(); }, 60);
+  }
+
+  if (sessionStorage.getItem(AUTH_KEY) !== '1') { showLogin(); return; }
+
+  // ── Authenticated ────────────────────────────────────────────────────
+  (function () {
   var LS_KEY = 'pitch_analytics';
 
   function load() {
@@ -280,7 +339,8 @@
   });
 
   render();
-})();
+  })(); // end authenticated block
+})(); // end auth gate
 </script>
 </body>
 </html>
